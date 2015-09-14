@@ -4,7 +4,7 @@
   "description": "markdown manifests for muxrpc apis",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/ssbc/mdmanifest/issues"
   },
-  "homepage": "https://github.com/ssbc/mdmanifest#readme"
+  "homepage": "https://github.com/ssbc/mdmanifest#readme",
+  "dependencies": {
+    "mdast": "^1.2.0",
+    "mdast-html": "^1.2.1"
+  },
+  "devDependencies": {
+    "tape": "^4.2.0"
+  }
 }
