@@ -17,6 +17,19 @@ function set (obj, path, value) {
   obj[path[0]] = value
 }
 
+function parseMethodHeading (token) {
+  var textToken = token.children[0]
+  assert.equal(textToken.type, 'text', 'Headings should not have any markup')
+
+  var parts = textToken.value.split(': ')
+  assert.equal(parts.length, 2, 'Heading "'+textToken.value+'" should be of form `method: type`')
+  
+  var name = parts[0], type = parts[1]
+  assert(nameRegex.test(name), 'Function name "'+name+'" does nots match '+nameRegex)
+  assert(nameRegex.test(type), 'Function type "'+type+'" does not match '+typeRegex)
+  return parts
+}
+
 var nameRegex = /^[a-z][a-z0-9\.\-_]*$/i
 var typeRegex = /^[a-z]+$/i
 module.exports.manifest = function (text) {
@@ -25,16 +38,8 @@ module.exports.manifest = function (text) {
   var manifest = {}
   mdast().parse(text).children.forEach(function (token, i) {
     if (token.type === 'heading' && token.depth === 2) {
-      var textToken = token.children[0]
-      assert.equal(textToken.type, 'text', 'Headings should not have any markup')
-
-      var parts = textToken.value.split(': ')
-      assert.equal(parts.length, 2, 'Heading "'+textToken.value+'" should be of form `method: type`')
-      
-      var name = parts[0], type = parts[1]
-      assert(nameRegex.test(name), 'Function name "'+name+'" does nots match '+nameRegex)
-      assert(nameRegex.test(type), 'Function type "'+type+'" does not match '+typeRegex)
-      set(manifest, name.split('.'), type)
+      var parts = parseMethodHeading(token)
+      set(manifest, parts[0].split('.'), parts[1])
     }
   })
 
@@ -44,6 +49,51 @@ module.exports.manifest = function (text) {
 module.exports.usage = function (text, cmd) {
   assert.equal(typeof text, 'string', 'Input should be a markdown string')
 
+  var lexer = mdast()
+  var tokens = lexer.parse(text).children
+  if (!cmd) {
+    // toplevel usage
+    var inSummary = true // in the api summary?
+    var toplevelParas = []
+    var methods = []
+    var currentMethod
+    tokens.forEach(function (token) {
+      if (token.type == 'paragraph' && inSummary) {
+        // a para in the api's toplevel summary
+        toplevelParas.push(lexer.stringify({ type: 'root', children: token.children }))
+      } else if (token.type == 'heading' && token.depth == 2) {
+        // a method heading
+        inSummary = false // no longer in the api summary
+        var parts = parseMethodHeading(token)
+        currentMethod = parts[0]
+      }
+      else if (token.type == 'paragraph' && currentMethod) {
+        // the first para in a method
+        methods.push(currentMethod + ' ' + lexer.stringify({ type: 'root', children: token.children }))
+        currentMethod = null
+      }
+    })
+    if (currentMethod)
+      methods.push(currentMethod)
+    return toplevelParas.join('\n') + '\nCommands:\n  ' + methods.join('  ').trim()
+  }
+
+  // method usage
+  var inMethod = false // in the method?
+  var elems = []
+  for (var i=0; i < tokens.length; i++) {
+    var token = tokens[i]
+    if (token.type == 'heading') {
+      // a heading
+      if (inMethod)
+        break // done pulling from the method's summary
+      if (token.depth == 2 && parseMethodHeading(token)[0] == cmd)
+        inMethod = true // we're in the target method's summary
+    }
+    else if (inMethod)
+      elems.push(token)
+  }
+  return lexer.stringify({ type: 'root', children: elems }).trim()
 }
 
 module.exports.html = function (text) {

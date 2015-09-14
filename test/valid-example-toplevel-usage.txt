@@ -1,0 +1,8 @@
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It's not a real API, but it would work with muxrpc.
+
+Commands:
+  ping Pings a target machine.
+  listen Listens for pings.

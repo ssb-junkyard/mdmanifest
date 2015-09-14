@@ -1,0 +1,10 @@
+Pings a target machine.
+
+ping {target string} [-n number]
+
+-   target: string, an IPv4/IPv6 address
+-   opts:
+    -   n: optional number, how many times to ping
+
+Sends ICMP ping messages to the given target.
+Will wait 1 second between pings.
