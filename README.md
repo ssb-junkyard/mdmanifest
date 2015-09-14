@@ -13,7 +13,7 @@ Api long, multiline description.
 Api long, multiline description.
 Api long, multiline description.
 
-## method-name (type)
+## method-name: type
 
 Method short description.
 
@@ -32,7 +32,7 @@ Example API, v1.0.0.
 This is an example API, written by Paul Frazee.
 It's not a real API, but it would work with muxrpc.
 
-## ping (async)
+## ping: async
 
 Pings a target machine.
 
@@ -45,7 +45,7 @@ ping {target string} [-n number]
 Sends ICMP ping messages to the given target.
 Will wait 1 second between pings.
 
-## listen (source)
+## listen: source
 
 Listens for pings.
 
