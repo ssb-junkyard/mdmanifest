@@ -107,8 +107,15 @@ module.exports.usage = function (text, cmd) {
       if (token.depth == 2 && parseMethodHeading(token)[0] == cmd)
         inMethod = true // we're in the target method's summary
     }
-    else if (inMethod)
-      elems.push(token)
+    else if (inMethod) {
+      if (token.type == 'code') {
+        if (token.lang == 'bash' || token.lang == 'sh' || token.lang == 'shell') {
+          token.type = 'text'
+          elems.push(token)
+        }
+      } else
+        elems.push(token)
+    }
   }
   return lexer.stringify({ type: 'root', children: elems }).trim()
 }

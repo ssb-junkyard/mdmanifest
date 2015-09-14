@@ -9,17 +9,25 @@ The form:
 
 Api short description.
 
-Api long, multiline description.
-Api long, multiline description.
-Api long, multiline description.
+Api long, multiline description (optional).
+Api long, multiline description (optional).
+Api long, multiline description (optional).
 
 ## method-name: type
 
 Method short description.
 
-Method long, multiline description.
-Method long, multiline description.
-Method long, multiline description.
+```bash
+bash usage (optional)
+```
+
+```js
+js usage (optional)
+```
+
+Method long, multiline description (optional).
+Method long, multiline description (optional).
+Method long, multiline description (optional).
 ```
 
 Example:
@@ -36,7 +44,13 @@ It's not a real API, but it would work with muxrpc.
 
 Pings a target machine.
 
+```bash
 ping {target string} [-n number]
+```
+
+```js
+ping(target, { n: })
+```
 
  - target: string, an IPv4/IPv6 address
  - opts:
@@ -48,6 +62,14 @@ Will wait 1 second between pings.
 ## listen: source
 
 Listens for pings.
+
+```bash
+listen
+```
+
+```js
+listen()
+```
 
 Will emit a string describing incoming pings, as they occur.
 ```
@@ -82,9 +104,9 @@ Pings a target machine.
 
 ping {target string} [-n number]
 
- - target: string, an IPv4/IPv6 address
- - opts:
-   - n: optional number, how many times to ping
+-   target: string, an IPv4/IPv6 address
+-   opts:
+    -   n: optional number, how many times to ping
 
 Sends ICMP ping messages to the given target.
 Will wait 1 second between pings.
@@ -105,25 +127,7 @@ Command-line usage:
 :~/mdmanifest⭐  ./mdm.js html ./test/valid-example.md 
 <h1>example-api</h1>
 <p>Example API, v1.0.0.</p>
-<p>This is an example API, written by Paul Frazee.
-It&apos;s not a real API, but it would work with muxrpc.</p>
-<h2>ping: async</h2>
-<p>Pings a target machine.</p>
-<p>ping {target string} [-n number]</p>
-<ul>
-<li>target: string, an IPv4/IPv6 address</li>
-<li>
-<p>opts:</p>
-<ul>
-<li>n: optional number, how many times to ping</li>
-</ul>
-</li>
-</ul>
-<p>Sends ICMP ping messages to the given target.
-Will wait 1 second between pings.</p>
-<h2>listen: source</h2>
-<p>Listens for pings.</p>
-<p>Will emit a string describing incoming pings, as they occur.</p>
+...
 
 :~/mdmanifest⭐  ./mdm.js usage ./test/valid-example.md 
 Example API, v1.0.0.
@@ -132,8 +136,8 @@ This is an example API, written by Paul Frazee.
 It's not a real API, but it would work with muxrpc.
 
 Commands:
-  ping Pings a target machine.
-  listen Listens for pings.
+  ping    Pings a target machine.
+  listen  Listens for pings.
 
 :~/mdmanifest⭐  ./mdm.js usage ./test/valid-example.md ping
 Pings a target machine.

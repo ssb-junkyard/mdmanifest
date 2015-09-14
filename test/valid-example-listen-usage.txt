@@ -1,3 +1,5 @@
 Listens for pings.
 
+listen
+
 Will emit a string describing incoming pings, as they occur.
