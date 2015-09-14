@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
 var minimist = require('minimist')
+var wrap = require('word-wrap')
 var mdm = require('.')
 
 var parsedArgv = minimist(process.argv.slice(2))
@@ -32,5 +33,5 @@ function log (v) {
   if (typeof v == 'object')
     console.log(JSON.stringify(v, null, 2))
   else
-    console.log(v)
+    console.log(wrap(v, { width: 80, newline: '' }))
 }
