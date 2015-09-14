@@ -17,6 +17,23 @@ function set (obj, path, value) {
   obj[path[0]] = value
 }
 
+function fill (str, n) {
+  return str + ' '.repeat(n - str.length)
+}
+
+function methodTable (methods) {
+  // figure out how long the names column needs to be
+  var namelen = 1
+  methods.forEach(function (m) {
+    if (m.name.length > namelen)
+      namelen = m.name.length
+  })
+
+  return methods.map(function (m) {
+    return '  ' + fill(m.name, namelen + 2) + m.desc
+  }).join('').trim()
+}
+
 function parseMethodHeading (token) {
   var textToken = token.children[0]
   assert.equal(textToken.type, 'text', 'Headings should not have any markup')
@@ -69,13 +86,13 @@ module.exports.usage = function (text, cmd) {
       }
       else if (token.type == 'paragraph' && currentMethod) {
         // the first para in a method
-        methods.push(currentMethod + ' ' + lexer.stringify({ type: 'root', children: token.children }))
+        methods.push({ name: currentMethod, desc: lexer.stringify({ type: 'root', children: token.children })})
         currentMethod = null
       }
     })
     if (currentMethod)
-      methods.push(currentMethod)
-    return toplevelParas.join('\n') + '\nCommands:\n  ' + methods.join('  ').trim()
+      methods.push({ name: currentMethod })
+    return toplevelParas.join('\n') + '\nCommands:\n  ' + methodTable(methods)
   }
 
   // method usage
