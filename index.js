@@ -109,7 +109,7 @@ module.exports.usage = function (text, cmd) {
     }
     else if (inMethod) {
       if (token.type == 'code') {
-        if (token.lang == 'bash' || token.lang == 'sh' || token.lang == 'shell') {
+        if (token.lang == 'bash' || token.lang == 'sh' || token.lang == 'shell' || !token.lang) {
           token.type = 'text'
           elems.push(token)
         }
