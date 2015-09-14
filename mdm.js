@@ -33,5 +33,7 @@ function log (v) {
   if (typeof v == 'object')
     console.log(JSON.stringify(v, null, 2))
   else
-    console.log(wrap(v, { width: 80, newline: '' }))
+    console.log(
+      v.split('\n').map(function (v) { return wrap(v, { width: process.stdout.columns-5 }) }).join('\n')
+    )
 }
