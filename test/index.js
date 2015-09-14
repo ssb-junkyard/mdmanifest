@@ -31,7 +31,7 @@ tape('manifest() throws errors for format mistakes', function (t) {
 })
 
 tape('usage()', function (t) {
-  t.equal(mdm.usage(validExample), validExampleToplevelUsage)  
+  t.equal(mdm.usage(validExample), validExampleToplevelUsage)
   t.equal(mdm.usage(validExample, 'ping'), validExamplePingUsage)  
   t.equal(mdm.usage(validExample, 'listen'), validExampleListenUsage)  
   t.end()

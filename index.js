@@ -34,7 +34,7 @@ function methodTable (methods) {
   }).join('').trim()
 }
 
-function parseMethodHeading (token) {
+function parseMethodHeading (token, prefix) {
   var textToken = token.children[0]
   assert.equal(textToken.type, 'text', 'Headings should not have any markup')
 
@@ -44,6 +44,10 @@ function parseMethodHeading (token) {
   var name = parts[0], type = parts[1]
   assert(nameRegex.test(name), 'Function name "'+name+'" does nots match '+nameRegex)
   assert(nameRegex.test(type), 'Function type "'+type+'" does not match '+typeRegex)
+
+  if (prefix)
+    parts[0] = prefix + '.' + parts[0]
+
   return parts
 }
 
@@ -63,8 +67,9 @@ module.exports.manifest = function (text) {
   return manifest
 }
 
-module.exports.usage = function (text, cmd) {
+module.exports.usage = function (text, cmd, opts) {
   assert.equal(typeof text, 'string', 'Input should be a markdown string')
+  opts = opts || {}
 
   var lexer = mdast()
   var tokens = lexer.parse(text).children
@@ -81,7 +86,7 @@ module.exports.usage = function (text, cmd) {
       } else if (token.type == 'heading' && token.depth == 2) {
         // a method heading
         inSummary = false // no longer in the api summary
-        var parts = parseMethodHeading(token)
+        var parts = parseMethodHeading(token, opts.prefix)
         currentMethod = parts[0]
       }
       else if (token.type == 'paragraph' && currentMethod) {
@@ -109,6 +114,7 @@ module.exports.usage = function (text, cmd) {
     }
     else if (inMethod) {
       if (token.type == 'code') {
+        // only include code examples for the CLI
         if (token.lang == 'bash' || token.lang == 'sh' || token.lang == 'shell' || !token.lang) {
           token.type = 'text'
           elems.push(token)

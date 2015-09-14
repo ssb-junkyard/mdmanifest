@@ -98,6 +98,19 @@ Commands:
  - listen Listens for pings.
 */
 
+mdm.usage(exampleMd, { prefix: 'foo' })
+/* => 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It's not a real API, but it would work with muxrpc.
+
+Commands:
+
+ - foo.ping Pings a target machine.
+ - foo.listen Listens for pings.
+*/
+
 mdm.usage(exampleMd, 'ping')
 /* =>
 Pings a target machine.
