@@ -18,19 +18,23 @@ function set (obj, path, value) {
 }
 
 function fill (str, n) {
-  return str + ' '.repeat(n - str.length)
+  if (n > str.length)
+    return str + ' '.repeat(n - str.length)
+  return str
 }
 
-function methodTable (methods) {
+function methodTable (methods, nameWidth) {
   // figure out how long the names column needs to be
-  var namelen = 1
-  methods.forEach(function (m) {
-    if (m.name.length > namelen)
-      namelen = m.name.length
-  })
+  if (!nameWidth) {
+    nameWidth = 1
+    methods.forEach(function (m) {
+      if (m.name.length > namelen)
+        namelen = m.name.length
+    })
+  }
 
   return methods.map(function (m) {
-    return '  ' + fill(m.name, namelen + 2) + m.desc
+    return '  ' + fill(m.name, nameWidth) + ' ' + m.desc
   }).join('').trim()
 }
 
@@ -97,7 +101,7 @@ module.exports.usage = function (text, cmd, opts) {
     })
     if (currentMethod)
       methods.push({ name: currentMethod })
-    return toplevelParas.join('\n') + '\nCommands:\n  ' + methodTable(methods)
+    return toplevelParas.join('\n') + '\nCommands:\n  ' + methodTable(methods, opts.nameWidth)
   }
 
   // method usage

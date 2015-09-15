@@ -85,7 +85,7 @@ mdm.muxrpcManifest(exampleMd)
   listen: 'source'
 }*/
 
-mdm.usage(exampleMd)
+mdm.usage(exampleMd) 
 /* => 
 Example API, v1.0.0.
 
@@ -94,8 +94,8 @@ It's not a real API, but it would work with muxrpc.
 
 Commands:
 
- - ping Pings a target machine.
- - listen Listens for pings.
+ - ping    Pings a target machine.
+ - listen  Listens for pings.
 */
 
 mdm.usage(exampleMd, { prefix: 'foo' })
@@ -107,8 +107,21 @@ It's not a real API, but it would work with muxrpc.
 
 Commands:
 
- - foo.ping Pings a target machine.
- - foo.listen Listens for pings.
+ - foo.ping    Pings a target machine.
+ - foo.listen  Listens for pings.
+*/
+
+mdm.usage(exampleMd, { nameWidth: 20 }) 
+/* => 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It's not a real API, but it would work with muxrpc.
+
+Commands:
+
+ - ping                Pings a target machine.
+ - listen              Listens for pings.
 */
 
 mdm.usage(exampleMd, 'ping')
