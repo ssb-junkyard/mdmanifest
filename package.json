@@ -1,6 +1,6 @@
 {
   "name": "mdmanifest",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "markdown manifests for muxrpc apis",
   "main": "index.js",
   "scripts": {
