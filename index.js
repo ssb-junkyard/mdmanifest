@@ -28,8 +28,8 @@ function methodTable (methods, nameWidth) {
   if (!nameWidth) {
     nameWidth = 1
     methods.forEach(function (m) {
-      if (m.name.length > namelen)
-        namelen = m.name.length
+      if (m.name.length > nameWidth)
+        nameWidth = m.name.length
     })
   }
 
