@@ -1,0 +1,301 @@
+<html>
+    <head>
+    <title>mdmanifest - Documentation - SSBC</title>
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/atelier-forest-light.css">
+    <script src="/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+    <body>
+      <div id="topnav">
+    <div id="topnav-inner">
+      <a class="topnav-item " href="/" title="Home">
+      Home<br><small>SSBC</small>
+    </a>
+      <a class="topnav-item " href="/patchwork" title="Patchwork">
+      Patchwork<br><small>Social Messaging App</small>
+    </a>
+      <a class="topnav-item " href="/scuttlebot" title="Scuttlebot">
+      Scuttlebot<br><small>P2P Log Store</small>
+    </a>
+      <a class="topnav-item selected" href="/docs" title="Documentation">
+      Documentation<br><small>APIs, Articles</small>
+    </a>
+    </div>
+  </div>
+      <div id="layout">
+        <div id="leftnav">
+      <div class="leftnav-item">Key Concepts</div>
+      <div class="leftnav-subitems">
+        <div class="leftnav-item ">
+      <a href="/secure-scuttlebutt" title="Secure Scuttlebutt: a global database protocol">Secure Scuttlebutt: a global database protocol</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/ssb/linking.html" title="Content-Hash Linking">Content-Hash Linking</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/ssb/secret-handshake.html" title="Secret Handshake: a secure channel protocol">Secret Handshake: a secure channel protocol</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/ssb/end-to-end-encryption.html" title="Private Box: metadata-free encryption">Private Box: metadata-free encryption</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/ssb/faq.html" title="Frequently Asked Questions">Frequently Asked Questions</a>
+    </div>
+      </div>
+      <div class="leftnav-item">API Documentation</div>
+      <div class="leftnav-subitems">
+        <div class="leftnav-item ">
+      <a href="/scuttlebot/api.html" title="scuttlebot">scuttlebot</a>
+    </div>
+        <div class="leftnav-indent">
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/blobs.html" title="blobs">blobs</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/block.html" title="block">block</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/friends.html" title="friends">friends</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/gossip.html" title="gossip">gossip</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/invite.html" title="invite">invite</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/private.html" title="private">private</a>
+    </div>
+          <div class="leftnav-item ">
+      <a href="/scuttlebot/plugins/replicate.html" title="replicate">replicate</a>
+    </div>
+        </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-client" title="ssb-client">ssb-client</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-feed" title="ssb-feed">ssb-feed</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-keys" title="ssb-keys">ssb-keys</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-msgs" title="ssb-msgs">ssb-msgs</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-msg-schemas" title="ssb-msg-schemas">ssb-msg-schemas</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-ref" title="ssb-ref">ssb-ref</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-markdown" title="ssb-markdown">ssb-markdown</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/patchwork-threads" title="patchwork-threads">patchwork-threads</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/ssb-config" title="ssb-config">ssb-config</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/secret-stack" title="secret-stack">secret-stack</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/muxrpc" title="muxrpc">muxrpc</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/muxrpcli" title="muxrpcli">muxrpcli</a>
+    </div>
+        <div class="leftnav-item selected">
+      <a href="/mdmanifest" title="mdmanifest">mdmanifest</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/api/pull-stream.html" title="pull-stream">pull-stream</a>
+    </div>
+      </div>
+      <div class="leftnav-item">Articles</div>
+      <div class="leftnav-subitems">
+        <div class="leftnav-item ">
+      <a href="/docs/articles/design-challenge-avoid-centralization-and-singletons.html" title="Design Challenge: Avoiding Centralization and Singletons">Design Challenge: Avoiding Centralization and Singletons</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/articles/design-challenge-sybil-attack.html" title="Design Challenge: Sybil Attacks">Design Challenge: Sybil Attacks</a>
+    </div>
+        <div class="leftnav-item ">
+      <a href="/docs/articles/using-trust-in-open-networks.html" title="Using Trust in Open Networks">Using Trust in Open Networks</a>
+    </div>
+      </div>
+    </div>
+        <div id="content">
+          <h1 id="markdown-manifest">Markdown Manifest</h1>
+<p>Uses a regular markdown form to produce muxrpc manifests and cli usage descriptions.</p>
+<p>The form:</p>
+<pre><code class="lang-markdown"># api-name
+
+Api short description.
+
+Api long, multiline description (optional).
+Api long, multiline description (optional).
+Api long, multiline description (optional).
+
+## method-name: type
+
+Method short description.
+
+```bash
+bash usage (optional)
+``` --
+
+```js
+js usage (optional)
+``` --
+
+Method long, multiline description (optional).
+Method long, multiline description (optional).
+Method long, multiline description (optional).
+</code></pre>
+<p>Example:</p>
+<pre><code class="lang-markdown"># example-api
+
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It&#39;s not a real API, but it would work with muxrpc.
+
+## ping: async
+
+Pings a target machine.
+
+```bash
+ping {target string} [-n number]
+``` --
+
+```js
+ping(target, { n: })
+``` --
+
+ - target: string, an IPv4/IPv6 address
+ - opts:
+   - n: optional number, how many times to ping
+
+Sends ICMP ping messages to the given target.
+Will wait 1 second between pings.
+
+## listen: source
+
+Listens for pings.
+
+```bash
+listen
+``` --
+
+```js
+listen()
+``` --
+
+Will emit a string describing incoming pings, as they occur.
+</code></pre>
+<p>The api:</p>
+<pre><code class="lang-js">var mdm = require(&#39;mdmanifest&#39;)
+
+mdm.muxrpcManifest(exampleMd)
+/* =&gt; {
+  ping: &#39;async&#39;,
+  listen: &#39;source&#39;
+}*/
+
+mdm.usage(exampleMd) 
+/* =&gt; 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It&#39;s not a real API, but it would work with muxrpc.
+
+Commands:
+
+ - ping    Pings a target machine.
+ - listen  Listens for pings.
+*/
+
+mdm.usage(exampleMd, { prefix: &#39;foo&#39; })
+/* =&gt; 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It&#39;s not a real API, but it would work with muxrpc.
+
+Commands:
+
+ - foo.ping    Pings a target machine.
+ - foo.listen  Listens for pings.
+*/
+
+mdm.usage(exampleMd, { nameWidth: 20 }) 
+/* =&gt; 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It&#39;s not a real API, but it would work with muxrpc.
+
+Commands:
+
+ - ping                Pings a target machine.
+ - listen              Listens for pings.
+*/
+
+mdm.usage(exampleMd, &#39;ping&#39;)
+/* =&gt;
+Pings a target machine.
+
+ping {target string} [-n number]
+
+-   target: string, an IPv4/IPv6 address
+-   opts:
+    -   n: optional number, how many times to ping
+
+Sends ICMP ping messages to the given target.
+Will wait 1 second between pings.
+*/
+
+mdm.html(exampleMd) // standard HTML output
+</code></pre>
+<p>Command-line usage:</p>
+<pre><code>:~/mdmanifest⭐  ./mdm.js manifest ./test/valid-example.md 
+{
+  &quot;ping&quot;: &quot;async&quot;,
+  &quot;listen&quot;: &quot;source&quot;
+}
+
+:~/mdmanifest⭐  ./mdm.js html ./test/valid-example.md 
+&lt;h1&gt;example-api&lt;/h1&gt;
+&lt;p&gt;Example API, v1.0.0.&lt;/p&gt;
+...
+
+:~/mdmanifest⭐  ./mdm.js usage ./test/valid-example.md 
+Example API, v1.0.0.
+
+This is an example API, written by Paul Frazee.
+It&#39;s not a real API, but it would work with muxrpc.
+
+Commands:
+  ping    Pings a target machine.
+  listen  Listens for pings.
+
+:~/mdmanifest⭐  ./mdm.js usage ./test/valid-example.md ping
+Pings a target machine.
+
+ping {target string} [-n number]
+
+-   target: string, an IPv4/IPv6 address
+-   opts:
+    -   n: optional number, how many times to ping
+
+Sends ICMP ping messages to the given target.
+Will wait 1 second between pings.
+</code></pre>
+        </div>
+      </div>
+    </body>
+  </html>
