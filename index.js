@@ -1,6 +1,6 @@
 var assert = require('assert')
-var mdast = require('mdast')
-var html = require('mdast-html')
+var remark = require('remark')
+var html = require('remark-html')
 
 // - obj: object
 // - path: array, a list of keys
@@ -61,7 +61,7 @@ module.exports.manifest = function (text) {
   assert.equal(typeof text, 'string', 'Input should be a markdown string')
 
   var manifest = {}
-  mdast().parse(text).children.forEach(function (token, i) {
+  remark().parse(text).children.forEach(function (token, i) {
     if (token.type === 'heading' && token.depth === 2) {
       var parts = parseMethodHeading(token)
       set(manifest, parts[0].split('.'), parts[1])
@@ -75,7 +75,7 @@ module.exports.usage = function (text, cmd, opts) {
   assert.equal(typeof text, 'string', 'Input should be a markdown string')
   opts = opts || {}
 
-  var lexer = mdast()
+  var lexer = remark()
   var tokens = lexer.parse(text).children
   if (!cmd) {
     // toplevel usage
@@ -127,10 +127,13 @@ module.exports.usage = function (text, cmd, opts) {
         elems.push(token)
     }
   }
-  return lexer.stringify({ type: 'root', children: elems }).trim()
+  return lexer
+    .stringify({ type: 'root', children: elems })
+    .trim()
+    .replace(/\\\[/g, '[') // dont escape '['
 }
 
 module.exports.html = function (text) {
   assert.equal(typeof text, 'string', 'Input should be a markdown string')
-  return mdast().use(html).process(text)
+  return remark().use(html).process(text)
 }
