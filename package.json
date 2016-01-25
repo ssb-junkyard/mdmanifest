@@ -26,8 +26,8 @@
   },
   "homepage": "https://github.com/ssbc/mdmanifest#readme",
   "dependencies": {
-    "mdast": "^1.2.0",
-    "mdast-html": "^1.2.1",
+    "remark": "^3.2.2",
+    "remark-html": "^2.0.2",
     "minimist": "^1.2.0",
     "word-wrap": "^1.1.0"
   },
