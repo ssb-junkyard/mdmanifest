@@ -79,7 +79,7 @@ The api:
 ```js
 var mdm = require('mdmanifest')
 
-mdm.muxrpcManifest(exampleMd)
+mdm.manifest(exampleMd)
 /* => {
   ping: 'async',
   listen: 'source'
